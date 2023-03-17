@@ -16,6 +16,11 @@ app.get('/', (req, res) => {
     res.render('index', { title : 'HOME'})
 })
 
+app.post('/', (req, res) => {
+    console.log(req.body)
+    res.redirect('/')
+})
+
 app.get('/about', (req, res) => {
     res.render('about', {title : 'About'})
 })
