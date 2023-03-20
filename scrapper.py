@@ -10,17 +10,18 @@ options.add_experimental_option("detach", True)
 
 global ser
 if(platform.system() == 'Darwin'):
-    ser = Service(os.getcwd() + "/chromedriver_mac_arm64/chromedriver")
+    ser = Service(os.getcwd() + "/chromedriver_mac_arm64/chromedriver.exe")
 elif(platform.system() == 'Windows'):
     ser = Service(os.getcwd() + "/chromedriver_win32/chromedriver.exe")
 print(ser)
-driver = webdriver.Chrome(options=options , service=ser)
-driver.get('https://en.wikipedia.org/wiki/Wikipedia')
+driver = webdriver.Chrome( service=ser)
+driver.get('https://www.swiggy.com')
 
-driver.find_element(by = 'By.XPATH' ,value= '//*[@id="searchform"]/div/div/div[1]/input').send_keys('leo')
-# driver.find_element(by = By.XPATH ,value='//*[@id="searchform"]/div/button').click
 
-name = driver.find_element(by=By.XPATH, value='//*[@id="firstHeading"]/span')
+driver.find_element(by = 'By.XPATH' ,value= '//*[@id="location"]').send_keys('mumbai')
+driver.find_element(by = By.XPATH ,value='//*[@id="root"]/div[1]/div[1]/div/div[1]/div[1]/div/div[2]/div/div[2]/button[1]').click
+
+# name = driver.find_element(by=By.XPATH, value='//*[@id="firstHeading"]/span')
 # print('this is print message \n', type(name))
 
-driver.quit()
+# driver.quit()
